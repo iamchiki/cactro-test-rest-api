@@ -17,7 +17,6 @@ module.exports = async (req, res, next) => {
 
       const { userId } = decoded; // get user id from the decoded token
       const user = await User.findById(userId);
-      console.log("user", user);
 
       const { password, ...data } = user; // return user object without the password
       req.user = data;

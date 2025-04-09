@@ -18,7 +18,7 @@ const signInController = async (req, res, next) => {
       expiresIn: "10m",
     });
 
-    res.cookie("authToken", token, { httpOnly: false, maxAge: 3600000 });
+    res.cookie("authToken", token, { httpOnly: false, maxAge: 10 * 60 * 1000 });
 
     res.status(200).json({ message: "Signed in successfully" });
   } catch (error) {

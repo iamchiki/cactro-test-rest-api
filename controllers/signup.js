@@ -21,14 +21,9 @@ const signUpController = async (req, res, next) => {
     });
     await user.save();
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    res.cookie("authToken", token, { httpOnly: false, maxAge: 3600000 });
-
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
-    res.status(500).json({ error: "Error registering user" });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
