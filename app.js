@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const connectDB = require("./database/mongooseDb");
 const authRoute = require("./routes/auth");
+const taskRoute = require("./routes/tasks");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(authRoute);
+app.use(taskRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello, REST Api");
